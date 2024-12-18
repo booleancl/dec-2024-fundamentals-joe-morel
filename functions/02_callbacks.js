@@ -3,29 +3,28 @@
 */
 
 export function useCallbacksAsDataType() {
-
-  var chainProcesses = function(callbacks) {
-    var word = ''
+  var chainProcesses = function (callbacks) {
+    var word = "";
 
     for (var index = 0; index < callbacks.length; index++) {
-      var actualProcess = callbacks[index]
-      word += actualProcess()
+      var actualProcess = callbacks[index];
+      word += actualProcess();
     }
 
-    return word
-  }
+    return word;
+  };
   var processes = [
-    function(){
-      return 'Callbacks';
+    function () {
+      return "Callbacks ";
     },
-    function(){
-      return 'are'
+    function () {
+      return "are ";
     },
-    function(){
-      return 'powerful'
-    }
-  ]
-  return chainProcesses(processes)
+    function () {
+      return "powerful";
+    },
+  ];
+  return chainProcesses(processes);
 }
 
 /*
@@ -39,11 +38,10 @@ export function useCallbacksAsDataType() {
 
 // forEach ... sirve para iterar un array pero no hacer modificaciones en él
 export function forEach(array, callback) {
-  
-  for(var index = 0; index < array.length; index++) {
+  for (var index = 0; index < array.length; index++) {
     // algo falta acá. la idea de delegar esta operación es que la función tenga disponible los argumentos necesarios para llevar a cabo su responsabilidad.
-    var actualValue
-    var actualIndex
-    callback(actualValue, actualIndex)
+    var actualValue = array[index];
+    var actualIndex = index;
+    callback(actualValue, actualIndex);
   }
 }
