@@ -1,53 +1,56 @@
-  /*
+/*
     Las funciones en Javascript son en realidad instancias de un objeto llamado 'Function'.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
   */
 
 export function namedFunctions() {
-  
   // ¿Que raro? No falla al ejecutar la función antes de declararla ¿Por qué?
-  
-  normalFunction()
-  
+
   // Función declarada de la forma "clásica"
   function normalFunction() {
     // ... acá va la lógica
   }
-  
+  normalFunction();
+
   // No podemos hacer esto debido a que la propiedad name es de solo lectura, pero intentarlo no provocará error
 
-  // normalFunction.name = "hackedName";
+  //normalFunction.name = "hackedName";
 
- /*
+  /*
   Function declarada de forma anónima debe ser
   asignada a una variable, o ser usada como expresión.
   
   Se le dice "Anónima" no por la ausencia del valor name, sino que por la ausencia del nombre JUNTO AL KEYWORD "function". Esto es la principal diferencia con ostros lenguajes como Java.
 */
 
-//  Sin asignar provoca error de sintaxis. Prueba descomentando la siguiente línea
+  //  Sin asignar provoca error de sintaxis. Prueba descomentando la siguiente línea
 
-//  function () {}
+  //  function () {}
 
-//  Escrita como "expresión" no provoca error
-//  Analizaremos luego que son las expresiones
+  //  Escrita como "expresión" no provoca error
+  //  Analizaremos luego que son las expresiones
 
-  (function () {})
+  console.log(function hello() {}.name);
 
   // La función "anónima" en la propiedad 'name' asignará el nombre de la variable.
-  
+
   //  ¿Qué pasa si la ejecutamos antes de declarar?
-  
+
   //  anonymous()
-  
-  var anonymous = function () {}
+
+  var anonymous = function () {};
+  // console.log("annonimousFunc=", anonymous.name);
+  var myService = {
+    getData: function myName() {},
+  };
+  console.log("Name=", myService.getData.name);
 
   return {
     normalFunction: normalFunction,
-    anonymousFunction: anonymous,
+    //anonymousFunction: anonymous,
     // lo anterior es igual a esto por eso pasa la prueba
-    // anonymousFunction: function () {}
-  }
+    anonymousFunction: function () {},
+  };
 }
 
 export function expressionFunctions() {
@@ -74,7 +77,7 @@ export function expressionFunctions() {
   // (function() {
   //   return nonExistsVarible
   // })()
-  
+
   // no definido como expresión provoca error de sintáxis
   //function named() { return nonExistsVarible }()
 
@@ -93,7 +96,6 @@ export function expressionFunctions() {
     https://developer.mozilla.org/en-US/docs/Glossary/IIFE#the_module_pattern
   */
 
-  // return function(){}
-  return function named(){}
+  return function () {};
+  //return function named() {};
 }
-
